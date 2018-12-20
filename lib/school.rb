@@ -1,30 +1,31 @@
 # code here!
 class School
 
-  attr_reader :school, :roster
-
-  def initialize(name)
-    @school = name
+  def initialize(school_name)
+    @school_name = school_name
     @roster = {}
   end
 
-
-
-  def add_student(name, grade)
-    if roster.keys.include?(grade)
-      roster[grade] << name
-    else
-      roster[grade] = []
-      roster[grade] << name
-    end
+  def roster
+    @roster
   end
 
-  def grade(grade)
-    roster[grade]
+  def add_student(name, grade)
+    @student_name = name
+    @grade = grade
+    if @roster.include?(grade) == false
+      @roster[grade] = []
+    end
+    @roster[grade] << name
+  end
+
+  def grade(number)
+    @roster[number]
   end
 
   def sort
-    roster.each do |grades, students|
-      students.sort!
+    @roster.each do |grade, name|
+      @roster[grade] = name.sort
     end
   end
+end
